@@ -53,6 +53,24 @@ class Settings(BaseSettings):
 
     # Environment
     ENVIRONMENT: str = os.getenv("ENVIRONMENT", "development")
+    
+    # Storage settings
+    STORAGE_TYPE: str = os.getenv("STORAGE_TYPE", "local")  # "local" or "s3"
+    UPLOAD_DIRECTORY: str = os.getenv("UPLOAD_DIRECTORY", "uploads")
+    
+    # S3 settings (only used if STORAGE_TYPE is "s3")
+    S3_BUCKET_NAME: Optional[str] = os.getenv("S3_BUCKET_NAME")
+    S3_ACCESS_KEY: Optional[str] = os.getenv("S3_ACCESS_KEY")
+    S3_SECRET_KEY: Optional[str] = os.getenv("S3_SECRET_KEY")
+    S3_REGION: str = os.getenv("S3_REGION", "us-east-1")
+    
+    # WebSocket settings
+    WEBSOCKET_ORIGINS: List[str] = [
+        "ws://localhost:3000",
+        "ws://localhost:3001",
+        "ws://localhost:8000",
+        "ws://localhost:8080",
+    ]
 
 
 settings = Settings()
