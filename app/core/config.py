@@ -71,6 +71,13 @@ class Settings(BaseSettings):
         "ws://localhost:8000",
         "ws://localhost:8080",
     ]
+    
+    # Slack settings
+    SLACK_BOT_TOKEN: Optional[str] = os.getenv("SLACK_BOT_TOKEN")
+    SLACK_SIGNING_SECRET: Optional[str] = os.getenv("SLACK_SIGNING_SECRET")
+    SLACK_CLIENT_ID: Optional[str] = os.getenv("SLACK_CLIENT_ID")
+    SLACK_CLIENT_SECRET: Optional[str] = os.getenv("SLACK_CLIENT_SECRET")
+    SLACK_REDIRECT_URI: Optional[str] = os.getenv("SLACK_REDIRECT_URI")
 
 
 settings = Settings()
